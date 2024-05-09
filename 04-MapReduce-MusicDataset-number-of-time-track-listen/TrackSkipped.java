@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
-public class Music2 
+public class TrackSkipped 
 {
 	private static class MapperClass extends Mapper<LongWritable, Text, Text, IntWritable>
 	{
@@ -28,7 +28,7 @@ public class Music2
 			{
 				String[] data = words.split(",");
 				Text outputKey = new Text(data[1]);
-				IntWritable outputValue = new IntWritable(Integer.parseInt(data[3]));
+				IntWritable outputValue = new IntWritable(Integer.parseInt(data[4]));
 				context.write(outputKey, outputValue);
 			}
 		}
@@ -37,7 +37,7 @@ public class Music2
 	private static class ReducerClass extends Reducer<Text, IntWritable, Text, IntWritable>
 	{
 		protected void setup(Context context) throws IOException, InterruptedException {
-			context.write(new Text("The Number of Times Track is Listened on Radio"), null);
+			context.write(new Text("The Number of Times Track is SKipped"), null);
 	    }
 
 		int count = 0;
@@ -65,7 +65,7 @@ public class Music2
 		Path input = new Path(files[0]);
 		Path output = new Path(files[1]);
 		Job j = Job.getInstance(c, "Listened On Radio");
-		j.setJarByClass(Music2.class);
+		j.setJarByClass(TrackSkipped.class);
 		j.setMapperClass(MapperClass.class);
 		j.setReducerClass(ReducerClass.class);
 		j.setOutputKeyClass(Text.class);
