@@ -241,8 +241,6 @@ Time taken: 107.541 seconds
 now go to hbase and list out tables and then scan this one
 
 
-
-
 hbase(main):001:0> list
 TABLE                                                                                                                                                         
 CustomerInfo                                                                                                                                                  
@@ -271,5 +269,6 @@ ROW                                      COLUMN+CELL
  8                                       column=Customer:cust_name, timestamp=1715181818702, value=Amanda Clark                                               
  8                                       column=Customer:order_id, timestamp=1715181818702, value=108                                                         
  9                                       column=Customer:cust_name, timestamp=1715181818702, value=Matthew White                                              
- 9                                       column=Customer:order_id, timestamp=1715181818702, value=109                                                         
+ 9                                       column=Customer:order_id, timestamp=1715181818702, value=109                             
+                             
 10 row(s) in 1.1440 seconds
